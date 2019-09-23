@@ -156,17 +156,29 @@ namespace photoEditor1
         private void LocateOnDiskToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //https://stackoverflow.com/questions/9646114/open-file-location
-            if(listView1.SelectedItems[0]!=null)
+            if (listView1.SelectedItems.Count == 0)
+            {
+                MessageBox.Show(this, "Select a file to find its location on the disk", "Must select file", MessageBoxButtons.OK,
+                     MessageBoxIcon.Information);
+                return;
+            }
             Process.Start("explorer.exe", "/select, " + (String)listView1.SelectedItems[0].Tag);
         }
 
         private void SelectRootFolderToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            folderBrowserDialog1.ShowDialog();
-            String newPath = folderBrowserDialog1.SelectedPath;
-            label1.Text = newPath;
-            LoadDirectories(newPath);
-            LoadJPEGsFromDirectoryAsync(newPath);
+            DialogResult result = folderBrowserDialog1.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                String newPath = folderBrowserDialog1.SelectedPath;
+                label1.Text = newPath;
+                LoadDirectories(newPath);
+                LoadJPEGsFromDirectoryAsync(newPath);
+            }
+            else
+            {
+                return;
+            }
         }
 
         private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
