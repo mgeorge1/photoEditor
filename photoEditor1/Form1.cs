@@ -13,6 +13,7 @@ namespace photoEditor1
 {
     public partial class Form1 : Form
     {
+        private PhotoEditorModalBox photoEditorModalBox;
         public Form1()
         {
             InitializeComponent();
@@ -139,9 +140,9 @@ namespace photoEditor1
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            LoadDirectories("C:\\Users\\Maggie\\Pictures");
+            LoadDirectories("C:\\Users\\mholl\\OneDrive\\Pictures");
             listView1.Clear();
-            LoadJPEGsFromDirectoryAsync("C:\\Users\\Maggie\\Pictures");
+            LoadJPEGsFromDirectoryAsync("C:\\Users\\mholl\\OneDrive\\Pictures");
         }
 
         private void TreeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
@@ -151,6 +152,9 @@ namespace photoEditor1
         private void ListView1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             label1.Text = (String)listView1.SelectedItems[0].Tag;
+            if (photoEditorModalBox == null)
+                photoEditorModalBox = new PhotoEditorModalBox();
+            DialogResult result = photoEditorModalBox.ShowDialog();
         }
 
         private void LocateOnDiskToolStripMenuItem_Click(object sender, EventArgs e)

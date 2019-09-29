@@ -9,3 +9,15 @@ C:\Users\Maggie\source\repos\photoEditor1\photoEditor1\obj\Debug\photoEditor1.cs
 C:\Users\Maggie\source\repos\photoEditor1\photoEditor1\obj\Debug\photoEditor1.exe
 C:\Users\Maggie\source\repos\photoEditor1\photoEditor1\obj\Debug\photoEditor1.pdb
 C:\Users\Maggie\source\repos\photoEditor1\photoEditor1\obj\Debug\photoEditor1.AboutForm.resources
+C:\Users\mholl\OneDrive\Documents (1) (1)\GitHub\photoEditor\photoEditor1\bin\Debug\photoEditor1.exe.config
+C:\Users\mholl\OneDrive\Documents (1) (1)\GitHub\photoEditor\photoEditor1\bin\Debug\photoEditor1.exe
+C:\Users\mholl\OneDrive\Documents (1) (1)\GitHub\photoEditor\photoEditor1\bin\Debug\photoEditor1.pdb
+C:\Users\mholl\OneDrive\Documents (1) (1)\GitHub\photoEditor\photoEditor1\obj\Debug\photoEditor1.csprojAssemblyReference.cache
+C:\Users\mholl\OneDrive\Documents (1) (1)\GitHub\photoEditor\photoEditor1\obj\Debug\photoEditor1.AboutForm.resources
+C:\Users\mholl\OneDrive\Documents (1) (1)\GitHub\photoEditor\photoEditor1\obj\Debug\photoEditor1.Form1.resources
+C:\Users\mholl\OneDrive\Documents (1) (1)\GitHub\photoEditor\photoEditor1\obj\Debug\photoEditor1.Properties.Resources.resources
+C:\Users\mholl\OneDrive\Documents (1) (1)\GitHub\photoEditor\photoEditor1\obj\Debug\photoEditor1.csproj.GenerateResource.cache
+C:\Users\mholl\OneDrive\Documents (1) (1)\GitHub\photoEditor\photoEditor1\obj\Debug\photoEditor1.csproj.CoreCompileInputs.cache
+C:\Users\mholl\OneDrive\Documents (1) (1)\GitHub\photoEditor\photoEditor1\obj\Debug\photoEditor1.exe
+C:\Users\mholl\OneDrive\Documents (1) (1)\GitHub\photoEditor\photoEditor1\obj\Debug\photoEditor1.pdb
+C:\Users\mholl\OneDrive\Documents (1) (1)\GitHub\photoEditor\photoEditor1\obj\Debug\photoEditor1.PhotoEditorModalBox.resources
