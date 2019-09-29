@@ -13,6 +13,8 @@ namespace photoEditor1
 {
     public partial class Form1 : Form
     {
+
+        private PhotoEditorModalBox photoEditorModalBox;
         public Form1()
         {
             InitializeComponent();
@@ -80,6 +82,7 @@ namespace photoEditor1
                 imageListLarge.ImageSize = new Size(32, 32);
                 foreach (FileInfo file in files)
                 {
+                    file.IsReadOnly = false;
                     try
                     {
                         byte[] bytes = System.IO.File.ReadAllBytes(file.FullName);
@@ -139,9 +142,9 @@ namespace photoEditor1
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            LoadDirectories("C:\\Users\\Maggie\\Pictures");
+            LoadDirectories("C:\\Users\\mhollingsworth\\Pictures");
             listView1.Clear();
-            LoadJPEGsFromDirectoryAsync("C:\\Users\\Maggie\\Pictures");
+            LoadJPEGsFromDirectoryAsync("C:\\Users\\mhollingsworth\\Pictures");
         }
 
         private void TreeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
@@ -151,6 +154,9 @@ namespace photoEditor1
         private void ListView1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             label1.Text = (String)listView1.SelectedItems[0].Tag;
+            photoEditorModalBox = new PhotoEditorModalBox(label1.Text);
+
+            DialogResult result = photoEditorModalBox.ShowDialog();
         }
 
         private void LocateOnDiskToolStripMenuItem_Click(object sender, EventArgs e)

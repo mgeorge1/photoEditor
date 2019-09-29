@@ -38,6 +38,7 @@
             this.saveButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
             this.pictureBox = new System.Windows.Forms.PictureBox();
+            this.pathLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.brightnessSlider)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
@@ -76,6 +77,7 @@
             this.invertButton.TabIndex = 5;
             this.invertButton.Text = "Invert";
             this.invertButton.UseVisualStyleBackColor = true;
+            this.invertButton.Click += new System.EventHandler(this.InvertButton_Click);
             // 
             // colorButton
             // 
@@ -121,6 +123,7 @@
             this.saveButton.TabIndex = 2;
             this.saveButton.Text = "Save";
             this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
             // cancelButton
             // 
@@ -130,20 +133,32 @@
             this.cancelButton.TabIndex = 3;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
             // pictureBox
             // 
             this.pictureBox.Location = new System.Drawing.Point(12, 12);
             this.pictureBox.Name = "pictureBox";
             this.pictureBox.Size = new System.Drawing.Size(548, 418);
+            this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox.TabIndex = 4;
             this.pictureBox.TabStop = false;
+            // 
+            // pathLabel
+            // 
+            this.pathLabel.AutoSize = true;
+            this.pathLabel.Location = new System.Drawing.Point(12, 542);
+            this.pathLabel.Name = "pathLabel";
+            this.pathLabel.Size = new System.Drawing.Size(28, 13);
+            this.pathLabel.TabIndex = 6;
+            this.pathLabel.Text = "Text";
             // 
             // PhotoEditorModalBox
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(577, 577);
+            this.Controls.Add(this.pathLabel);
             this.Controls.Add(this.pictureBox);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.saveButton);
@@ -156,6 +171,7 @@
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -171,5 +187,6 @@
         private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.PictureBox pictureBox;
+        private System.Windows.Forms.Label pathLabel;
     }
 }
