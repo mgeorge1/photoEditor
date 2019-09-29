@@ -46,3 +46,16 @@ C:\Users\Maggie\Desktop\photoEditor-master (2)\photoEditor-master\photoEditor1\o
 C:\Users\Maggie\Desktop\photoEditor-master (2)\photoEditor-master\photoEditor1\obj\Debug\photoEditor1.Properties.Resources.resources
 C:\Users\Maggie\Desktop\photoEditor-master (2)\photoEditor-master\photoEditor1\obj\Debug\photoEditor1.csproj.GenerateResource.cache
 C:\Users\Maggie\Desktop\photoEditor-master (2)\photoEditor-master\photoEditor1\obj\Debug\photoEditor1.csproj.CoreCompileInputs.cache
+C:\Users\mhollingsworth\Documents\GitHub\photoEditor\photoEditor-master\photoEditor1\bin\Debug\Icon.ico
+C:\Users\mhollingsworth\Documents\GitHub\photoEditor\photoEditor-master\photoEditor1\bin\Debug\photoEditor1.exe.config
+C:\Users\mhollingsworth\Documents\GitHub\photoEditor\photoEditor-master\photoEditor1\bin\Debug\photoEditor1.exe
+C:\Users\mhollingsworth\Documents\GitHub\photoEditor\photoEditor-master\photoEditor1\bin\Debug\photoEditor1.pdb
+C:\Users\mhollingsworth\Documents\GitHub\photoEditor\photoEditor-master\photoEditor1\obj\Debug\photoEditor1.csprojAssemblyReference.cache
+C:\Users\mhollingsworth\Documents\GitHub\photoEditor\photoEditor-master\photoEditor1\obj\Debug\photoEditor1.AboutForm.resources
+C:\Users\mhollingsworth\Documents\GitHub\photoEditor\photoEditor-master\photoEditor1\obj\Debug\photoEditor1.Form1.resources
+C:\Users\mhollingsworth\Documents\GitHub\photoEditor\photoEditor-master\photoEditor1\obj\Debug\photoEditor1.PhotoEditorModalBox.resources
+C:\Users\mhollingsworth\Documents\GitHub\photoEditor\photoEditor-master\photoEditor1\obj\Debug\photoEditor1.Properties.Resources.resources
+C:\Users\mhollingsworth\Documents\GitHub\photoEditor\photoEditor-master\photoEditor1\obj\Debug\photoEditor1.csproj.GenerateResource.cache
+C:\Users\mhollingsworth\Documents\GitHub\photoEditor\photoEditor-master\photoEditor1\obj\Debug\photoEditor1.csproj.CoreCompileInputs.cache
+C:\Users\mhollingsworth\Documents\GitHub\photoEditor\photoEditor-master\photoEditor1\obj\Debug\photoEditor1.exe
+C:\Users\mhollingsworth\Documents\GitHub\photoEditor\photoEditor-master\photoEditor1\obj\Debug\photoEditor1.pdb

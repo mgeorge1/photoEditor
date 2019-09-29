@@ -53,6 +53,7 @@
             this.brightnessSlider.TabIndex = 0;
             this.brightnessSlider.TickStyle = System.Windows.Forms.TickStyle.None;
             this.brightnessSlider.Value = 50;
+            this.brightnessSlider.MouseUp += new System.Windows.Forms.MouseEventHandler(this.brightnessSlider_MouseUp);
             // 
             // groupBox1
             // 
@@ -87,6 +88,7 @@
             this.colorButton.TabIndex = 4;
             this.colorButton.Text = "Color";
             this.colorButton.UseVisualStyleBackColor = true;
+            this.colorButton.Click += new System.EventHandler(this.ColorButton_Click);
             // 
             // label3
             // 
