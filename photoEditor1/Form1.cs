@@ -96,6 +96,7 @@ namespace photoEditor1
                             imageListSmall.Images.Add(new Bitmap(img));
                             imageListLarge.Images.Add(new Bitmap(img));
                         });
+                        ms.Close();
                     }
                     catch
                     {

@@ -57,7 +57,11 @@ namespace photoEditor1
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            pictureBox.Image.Save("myNewImage.jpeg", ImageFormat.Jpeg);
+            //File.Replace()
+            var image = myImage;
+            pictureBox.Image = null;
+            File.Delete(filePath);
+            image.Save(filePath, ImageFormat.Jpeg);
         }
 
         private void InvertButton_Click(object sender, EventArgs e)
