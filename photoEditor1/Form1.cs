@@ -13,6 +13,7 @@ namespace photoEditor1
 {
     public partial class Form1 : Form
     {
+
         private PhotoEditorModalBox photoEditorModalBox;
         public Form1()
         {
@@ -24,16 +25,16 @@ namespace photoEditor1
         private void LoadDirectories(String dir)
         {
             treeView1.Nodes.Clear();
-        //https://docs.microsoft.com/en-us/dotnet/api/system.io.directoryinfo.getdirectories?view=netframework-4.8#System_IO_DirectoryInfo_GetDirectories
-        //https://www.c-sharpcorner.com/article/display-sub-directories-and-files-in-treeview/
-        //https://docs.microsoft.com/en-us/dotnet/api/system.io.directoryinfo.getfiles?view=netframework-4.8
+            //https://docs.microsoft.com/en-us/dotnet/api/system.io.directoryinfo.getdirectories?view=netframework-4.8#System_IO_DirectoryInfo_GetDirectories
+            //https://www.c-sharpcorner.com/article/display-sub-directories-and-files-in-treeview/
+            //https://docs.microsoft.com/en-us/dotnet/api/system.io.directoryinfo.getfiles?view=netframework-4.8
 
             DirectoryInfo directoryInfo = new DirectoryInfo(dir);
             TreeNode topNode = treeView1.Nodes.Add("TOP", directoryInfo.Name);
             topNode.Tag = directoryInfo.FullName;
             topNode.Checked = true;
 
-            
+
 
             recursiveDirectoryLoader(topNode, directoryInfo);
         }
@@ -81,6 +82,7 @@ namespace photoEditor1
                 imageListLarge.ImageSize = new Size(32, 32);
                 foreach (FileInfo file in files)
                 {
+                    file.IsReadOnly = false;
                     try
                     {
                         byte[] bytes = System.IO.File.ReadAllBytes(file.FullName);
@@ -94,6 +96,7 @@ namespace photoEditor1
                             imageListSmall.Images.Add(new Bitmap(img));
                             imageListLarge.Images.Add(new Bitmap(img));
                         });
+                        ms.Close();
                     }
                     catch
                     {
@@ -111,10 +114,10 @@ namespace photoEditor1
                     Invoke((Action)delegate ()
                     {
                         listView1.Items.Add(item);
-                    
 
-                    listView1.LargeImageList = imageListLarge;
-                    listView1.SmallImageList = imageListSmall;
+
+                        listView1.LargeImageList = imageListLarge;
+                        listView1.SmallImageList = imageListSmall;
                     });
 
                 }
@@ -134,15 +137,15 @@ namespace photoEditor1
         }
         private void TreeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
-                label1.Text = (String)treeView1.SelectedNode.Tag;
-                LoadJPEGsFromDirectoryAsync(label1.Text);
+            label1.Text = (String)treeView1.SelectedNode.Tag;
+            LoadJPEGsFromDirectoryAsync(label1.Text);
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            LoadDirectories("C:\\Users\\mholl\\OneDrive\\Pictures");
+            LoadDirectories("C:\\Users\\mhollingsworth\\Pictures");
             listView1.Clear();
-            LoadJPEGsFromDirectoryAsync("C:\\Users\\mholl\\OneDrive\\Pictures");
+            LoadJPEGsFromDirectoryAsync("C:\\Users\\mhollingsworth\\Pictures");
         }
 
         private void TreeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
@@ -152,8 +155,8 @@ namespace photoEditor1
         private void ListView1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             label1.Text = (String)listView1.SelectedItems[0].Tag;
-            if (photoEditorModalBox == null)
-                photoEditorModalBox = new PhotoEditorModalBox();
+            photoEditorModalBox = new PhotoEditorModalBox(label1.Text);
+
             DialogResult result = photoEditorModalBox.ShowDialog();
         }
 
