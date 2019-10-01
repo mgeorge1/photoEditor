@@ -18,13 +18,19 @@ namespace photoEditor1
         private string filePath;
         private Bitmap myImage;
         private CancellationTokenSource cancellationTokenSource;
+        private Bitmap transformedBitmap;
+        private bool isCancelled = false;
+        private ProgressDialogBox progressDialogBox;
+
         public PhotoEditorModalBox(String newFilePath)
         {
             InitializeComponent();
             filePath = newFilePath;
-            pathLabel.Text = filePath;
             FileInfo file = new FileInfo(newFilePath);
             file.IsReadOnly = false;
+            pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+            myImage = new Bitmap(filePath);
+            pictureBox.Image = (Image)myImage;
 
         }
         
@@ -34,26 +40,54 @@ namespace photoEditor1
 
             cancellationTokenSource = new CancellationTokenSource();
             var token = cancellationTokenSource.Token;
+            
 
             await Task.Run(() =>
             {
-                for (int y = 0; y < myImage.Height; y++)
+                double num = 0;
+                double percentChange = 1.0 / transformedBitmap.Width / transformedBitmap.Height;
+                double percentage = 0;
+                int percentageNumber = 1;
+                double count = 0;
+                for (int y = 0; y < transformedBitmap.Height; y++)
                 {
-                    for (int x = 0; x < myImage.Width; x++)
+                    for (int x = 0; x < transformedBitmap.Width; x++)
                     {
-                        Color color = myImage.GetPixel(x, y);
+                        Color color = transformedBitmap.GetPixel(x, y);
                         int newRed = Math.Abs(color.R - 255);
                         int newGreen = Math.Abs(color.G - 255);
                         int newBlue = Math.Abs(color.B - 255);
 
                         Color newColor = Color.FromArgb(newRed, newGreen, newBlue);
-                        myImage.SetPixel(x, y, newColor);
+                        transformedBitmap.SetPixel(x, y, newColor);
 
                         if (token.IsCancellationRequested)
+                        {
+                            y = transformedBitmap.Height;
+                            x = transformedBitmap.Width;
                             break;
+                        }
+                        count++;
+                        percentage += (percentChange * 100);
+                        if(percentageNumber < percentage)
+                        {
+                            num = count / (transformedBitmap.Height * transformedBitmap.Width);
+                            try
+                            {
+                                Invoke((Action)delegate ()
+                                {
+                                    progressDialogBox.ProgressValue = (int)(num * 100);
+                                });
+                            }
+                            catch (ObjectDisposedException)
+                            {
+
+                            }
+                            percentageNumber++;
+                        }
+                        
                     }
                 }
-                pictureBox.Image = (Image)myImage;
             }, token);
 
             UseWaitCursor = false;
@@ -70,11 +104,16 @@ namespace photoEditor1
 
             await Task.Run(() =>
             {
-                for (int y = 0; y < myImage.Height; y++)
+                double num = 0;
+                double percentChange = 1.0 / transformedBitmap.Width / transformedBitmap.Height;
+                double percentage = 0;
+                int percentageNumber = 1;
+                double count = 0;
+                for (int y = 0; y < transformedBitmap.Height; y++)
                 {
-                    for (int x = 0; x < myImage.Width; x++)
+                    for (int x = 0; x < transformedBitmap.Width; x++)
                     {
-                        Color color = myImage.GetPixel(x, y);
+                        Color color = transformedBitmap.GetPixel(x, y);
                         int newRed = color.R - amount;
                         int newGreen = color.G - amount;
                         int newBlue = color.B - amount;
@@ -95,10 +134,35 @@ namespace photoEditor1
                             newBlue = 255;
 
                         Color newColor = Color.FromArgb(newRed, newGreen, newBlue);
-                        myImage.SetPixel(x, y, newColor);
+                        transformedBitmap.SetPixel(x, y, newColor);
+
+                        if (token.IsCancellationRequested)
+                        {
+                            y = transformedBitmap.Height;
+                            x = transformedBitmap.Width;
+                            break;
+                        }
+
+                        count++;
+                        percentage += (percentChange * 100);
+                        if (percentageNumber < percentage)
+                        {
+                            num = count / (transformedBitmap.Height * transformedBitmap.Width);
+                            try
+                            {
+                                Invoke((Action)delegate ()
+                                {
+                                    progressDialogBox.ProgressValue = (int)(num * 100);
+                                });
+                            }
+                            catch (ObjectDisposedException)
+                            {
+
+                            }
+                            percentageNumber++;
+                        }
                     }
                 }
-                pictureBox.Image = (Image)myImage;
             }, token);
 
             UseWaitCursor = false;
@@ -113,23 +177,53 @@ namespace photoEditor1
 
             await Task.Run(() =>
             {
-                for (int y = 0; y < myImage.Height; y++)
+                double num = 0;
+                double percentChange = 1.0 / transformedBitmap.Width / transformedBitmap.Height;
+                double percentage = 0;
+                int percentageNumber = 1;
+                double count = 0;
+                for (int y = 0; y < transformedBitmap.Height; y++)
                 {
-                    for (int x = 0; x < myImage.Width; x++)
+                    for (int x = 0; x < transformedBitmap.Width; x++)
                     {
-                        Color color = myImage.GetPixel(x, y);
+                        Color color = transformedBitmap.GetPixel(x, y);
                         double average = (color.R + color.G + color.B) / 3;
-                        double percentage = average / 255;
+                        double percentageColor = average / 255;
 
-                        int newRed = (int)(pickedColor.R * percentage);
-                        int newGreen = (int)(pickedColor.G * percentage);
-                        int newBlue = (int)(pickedColor.B * percentage);
+                        int newRed = (int)(pickedColor.R * percentageColor);
+                        int newGreen = (int)(pickedColor.G * percentageColor);
+                        int newBlue = (int)(pickedColor.B * percentageColor);
 
                         Color newColor = Color.FromArgb(newRed, newGreen, newBlue);
-                        myImage.SetPixel(x, y, newColor);
+                        transformedBitmap.SetPixel(x, y, newColor);
+
+                        if (token.IsCancellationRequested)
+                        {
+                            y = transformedBitmap.Height;
+                            x = transformedBitmap.Width;
+                            break;
+                        }
+
+                        count++;
+                        percentage += (percentChange * 100);
+                        if (percentageNumber < percentage)
+                        {
+                            num = count / (transformedBitmap.Height * transformedBitmap.Width);
+                            try
+                            {
+                                Invoke((Action)delegate ()
+                                {
+                                    progressDialogBox.ProgressValue = (int)(num * 100);
+                                });
+                            }
+                            catch (ObjectDisposedException)
+                            {
+
+                            }
+                            percentageNumber++;
+                        }
                     }
                 }
-                pictureBox.Image = (Image)myImage;
             }, token);
 
             UseWaitCursor = false;
@@ -137,7 +231,11 @@ namespace photoEditor1
 
         private async void TransformPhoto(string selectedTransformation, Color color)
         {
-            var transformedBitmap = pictureBox.Image;
+            progressDialogBox = new ProgressDialogBox();
+            progressDialogBox.Canceled += new EventHandler<EventArgs>(CancelOnProgressDialogPressed);
+            progressDialogBox.Show();
+            Image clone = (Image)pictureBox.Image.Clone();
+            transformedBitmap = (Bitmap)clone;
 
             if (selectedTransformation == "invert")
             {
@@ -151,13 +249,23 @@ namespace photoEditor1
             {
                 await ChangeColor(color);
             }
+            progressDialogBox.Close();
+            
+            if (!isCancelled)
+            {
+                pictureBox.Image = transformedBitmap;
+            }
+        }
+
+        private void CancelOnProgressDialogPressed(object sender, EventArgs e)
+        {
+            isCancelled = true;
+            cancellationTokenSource.Cancel();
         }
 
         private void PhotoEditorModalBox_Load(object sender, EventArgs e)
         {
-            pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
-            myImage = new Bitmap(filePath);
-            pictureBox.Image = (Image)myImage;                   
+                              
         }
 
         private void CancelButton_Click(object sender, EventArgs e)
@@ -168,10 +276,12 @@ namespace photoEditor1
         private void SaveButton_Click(object sender, EventArgs e)
         {
             //File.Replace()
-            var image = myImage;
-            pictureBox.Image = null;
-            File.Delete(filePath);
-            image.Save(filePath, ImageFormat.Jpeg);
+            //var image = pictureBox.Image;
+            //pictureBox.Image = null;
+            //File.Delete(filePath);
+            //image.Save(filePath, ImageFormat.Jpeg);
+            pictureBox.Image.Save("IHATETHIS.jpeg", ImageFormat.Jpeg);
+            this.Close();
         }
 
         private void InvertButton_Click(object sender, EventArgs e)

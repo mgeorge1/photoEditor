@@ -65,6 +65,12 @@
       <DependentUpon>PhotoEditorModalBox.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
+    <Compile Include="ProgressDialogBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProgressDialogBox.Designer.cs">
+      <DependentUpon>ProgressDialogBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AboutForm.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>
@@ -74,6 +80,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PhotoEditorModalBox.resx">
       <DependentUpon>PhotoEditorModalBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProgressDialogBox.resx">
+      <DependentUpon>ProgressDialogBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
