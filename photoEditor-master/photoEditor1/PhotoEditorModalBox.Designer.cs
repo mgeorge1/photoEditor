@@ -45,6 +45,7 @@
             // 
             // brightnessSlider
             // 
+            this.brightnessSlider.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.brightnessSlider.Location = new System.Drawing.Point(29, 38);
             this.brightnessSlider.Maximum = 100;
             this.brightnessSlider.Name = "brightnessSlider";
@@ -56,6 +57,9 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.groupBox1.Controls.Add(this.invertButton);
             this.groupBox1.Controls.Add(this.colorButton);
             this.groupBox1.Controls.Add(this.label3);
@@ -71,6 +75,7 @@
             // 
             // invertButton
             // 
+            this.invertButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.invertButton.Location = new System.Drawing.Point(453, 38);
             this.invertButton.Name = "invertButton";
             this.invertButton.Size = new System.Drawing.Size(75, 23);
@@ -81,7 +86,8 @@
             // 
             // colorButton
             // 
-            this.colorButton.Location = new System.Drawing.Point(216, 38);
+            this.colorButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.colorButton.Location = new System.Drawing.Point(372, 38);
             this.colorButton.Name = "colorButton";
             this.colorButton.Size = new System.Drawing.Size(75, 23);
             this.colorButton.TabIndex = 4;
@@ -91,6 +97,7 @@
             // 
             // label3
             // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(16, 22);
             this.label3.Name = "label3";
@@ -100,6 +107,7 @@
             // 
             // label2
             // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(116, 22);
             this.label2.Name = "label2";
@@ -109,6 +117,7 @@
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(55, 61);
             this.label1.Name = "label1";
@@ -118,6 +127,7 @@
             // 
             // saveButton
             // 
+            this.saveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.saveButton.Location = new System.Drawing.Point(404, 542);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(75, 23);
@@ -128,6 +138,7 @@
             // 
             // cancelButton
             // 
+            this.cancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cancelButton.Location = new System.Drawing.Point(485, 542);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
@@ -138,6 +149,9 @@
             // 
             // pictureBox
             // 
+            this.pictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox.Location = new System.Drawing.Point(12, 12);
             this.pictureBox.Name = "pictureBox";
             this.pictureBox.Size = new System.Drawing.Size(548, 418);
@@ -154,6 +168,7 @@
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.groupBox1);
+            this.MinimumSize = new System.Drawing.Size(400, 500);
             this.Name = "PhotoEditorModalBox";
             this.Text = "PhotoEditorModalBox";
             this.Load += new System.EventHandler(this.PhotoEditorModalBox_Load);

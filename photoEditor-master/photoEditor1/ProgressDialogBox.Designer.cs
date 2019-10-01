@@ -67,6 +67,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.progressDialogBoxCancelButton);
             this.Controls.Add(this.progressBar);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ProgressDialogBox";

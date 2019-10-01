@@ -237,6 +237,12 @@ namespace photoEditor1
             Image clone = (Image)pictureBox.Image.Clone();
             transformedBitmap = (Bitmap)clone;
 
+            cancelButton.Enabled = false;
+            saveButton.Enabled = false;
+            invertButton.Enabled = false;
+            colorButton.Enabled = false;
+            brightnessSlider.Enabled = false;
+
             if (selectedTransformation == "invert")
             {
                 await InvertColors();
@@ -250,7 +256,14 @@ namespace photoEditor1
                 await ChangeColor(color);
             }
             progressDialogBox.Close();
-            
+
+            cancelButton.Enabled = true;
+            saveButton.Enabled = true;
+            invertButton.Enabled = true;
+            colorButton.Enabled = true;
+            brightnessSlider.Enabled = true;
+            this.BringToFront();
+
             if (!isCancelled)
             {
                 pictureBox.Image = transformedBitmap;
