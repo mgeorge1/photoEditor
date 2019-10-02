@@ -20,6 +20,7 @@ namespace photoEditor1
         public ProgressDialogBox()
         {
             InitializeComponent();
+            CenterToParent();
         }
         public event EventHandler<EventArgs> Canceled;
 

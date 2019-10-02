@@ -231,8 +231,12 @@ namespace photoEditor1
 
         private async void TransformPhoto(string selectedTransformation, Color color)
         {
+            Form parent = this;
             progressDialogBox = new ProgressDialogBox();
             progressDialogBox.Canceled += new EventHandler<EventArgs>(CancelOnProgressDialogPressed);
+            //https://stackoverflow.com/questions/6606750/show-dialog-box-at-center-of-its-parent
+            progressDialogBox.Top = (this.Top + (this.Height / 2)) - progressDialogBox.Height / 2;
+            progressDialogBox.Left = (this.Left + (this.Width / 2)) - progressDialogBox.Width / 2;
             progressDialogBox.Show();
             Image clone = (Image)pictureBox.Image.Clone();
             transformedBitmap = (Bitmap)clone;

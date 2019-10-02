@@ -71,6 +71,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ProgressDialogBox";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Transforming";
             this.Load += new System.EventHandler(this.ProgressDialogBox_Load);
             this.ResumeLayout(false);
