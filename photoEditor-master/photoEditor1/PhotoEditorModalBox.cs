@@ -21,17 +21,18 @@ namespace photoEditor1
         private Bitmap transformedBitmap;
         private bool isCancelled = false;
         private ProgressDialogBox progressDialogBox;
+        private MemoryStream ms;
 
         public PhotoEditorModalBox(String newFilePath)
         {
             InitializeComponent();
             filePath = newFilePath;
-            FileInfo file = new FileInfo(newFilePath);
-            file.IsReadOnly = false;
+            byte[] bytes = System.IO.File.ReadAllBytes(newFilePath);
+            ms = new MemoryStream(bytes);
+            Image img = Image.FromStream(ms);
+            myImage = (Bitmap)img;
             pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
-            myImage = new Bitmap(filePath);
             pictureBox.Image = (Image)myImage;
-
         }
         
         private async Task InvertColors()
@@ -225,7 +226,6 @@ namespace photoEditor1
                     }
                 }
             }, token);
-
             UseWaitCursor = false;
         }
 
@@ -288,12 +288,9 @@ namespace photoEditor1
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            //File.Replace()
-            //var image = pictureBox.Image;
-            //pictureBox.Image = null;
-            //File.Delete(filePath);
-            //image.Save(filePath, ImageFormat.Jpeg);
-            pictureBox.Image.Save("IHATETHIS.jpeg", ImageFormat.Jpeg);
+            var image = pictureBox.Image;
+            image.Save(filePath, ImageFormat.Jpeg);
+            ms.Close();
             this.Close();
         }
 
@@ -305,7 +302,6 @@ namespace photoEditor1
 
         private void ColorButton_Click(object sender, EventArgs e)
         {
-            // TransformPhoto("changeColor");
             Color selectedColor;
             ColorDialog colorDialog = new ColorDialog();
 
@@ -314,7 +310,6 @@ namespace photoEditor1
                 selectedColor = colorDialog.Color;
                 TransformPhoto("changeColor", selectedColor);
             }
-           
         }
 
         private void brightnessSlider_MouseUp(object sender, MouseEventArgs e)

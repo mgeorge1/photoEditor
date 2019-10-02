@@ -73,3 +73,4 @@ C:\Users\mholl\OneDrive\Documents (1) (1)\GitHub\photoEditor\photoEditor-master\
 C:\Users\mholl\OneDrive\Documents (1) (1)\GitHub\photoEditor\photoEditor-master\photoEditor1\obj\Debug\photoEditor1.csproj.CoreCompileInputs.cache
 C:\Users\mholl\OneDrive\Documents (1) (1)\GitHub\photoEditor\photoEditor-master\photoEditor1\obj\Debug\photoEditor1.exe
 C:\Users\mholl\OneDrive\Documents (1) (1)\GitHub\photoEditor\photoEditor-master\photoEditor1\obj\Debug\photoEditor1.pdb
+C:\Users\mhollingsworth\Documents\GitHub\photoEditor\photoEditor-master\photoEditor1\obj\Debug\photoEditor1.ProgressDialogBox.resources
