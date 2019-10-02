@@ -108,8 +108,12 @@ namespace photoEditor1
                     //pictureBox1.Image = Image.FromFile((String)file.FullName);
                     ListViewItem item = new ListViewItem(file.Name);   // Text and image index
                     item.SubItems.Add(file.CreationTime.ToString());   // Column 2
-                    long sizeInMegabytes = file.Length / 1024;
-                    item.SubItems.Add(sizeInMegabytes.ToString());         // Column 3
+                    long sizeInKilobytes = file.Length / 1024;
+                    if (sizeInKilobytes == 0)
+                    {
+                        sizeInKilobytes = 1;
+                    }
+                    item.SubItems.Add(sizeInKilobytes.ToString() + " KB");         // Column 3
                     item.Tag = file.FullName;
                     item.ImageIndex = imageListLarge.Images.Count - 1;
 
@@ -139,8 +143,7 @@ namespace photoEditor1
         }
         private void TreeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
-                label1.Text = (String)treeView1.SelectedNode.Tag;
-                LoadJPEGsFromDirectoryAsync(label1.Text);
+                LoadJPEGsFromDirectoryAsync((String)treeView1.SelectedNode.Tag);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -158,8 +161,8 @@ namespace photoEditor1
 
         private void ListView1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            label1.Text = (String)listView1.SelectedItems[0].Tag;
-            photoEditorModalBox = new PhotoEditorModalBox(label1.Text);
+            
+            photoEditorModalBox = new PhotoEditorModalBox((String)listView1.SelectedItems[0].Tag);
 
             DialogResult result = photoEditorModalBox.ShowDialog();
         }
@@ -183,7 +186,7 @@ namespace photoEditor1
             if (result == DialogResult.OK)
             {
                 String newPath = folderBrowserDialog1.SelectedPath;
-                label1.Text = newPath;
+
                 LoadDirectories(newPath);
                 LoadJPEGsFromDirectoryAsync(newPath);
             }
